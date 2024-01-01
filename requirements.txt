@@ -1,4 +1,4 @@
-python == 3.8
+
 flask == 3.0.0
 pandas == 1.5.1
 tensorflow == 2.14.0
