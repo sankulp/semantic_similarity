@@ -67,5 +67,5 @@ def predict():
     result = {'text1': text1, 'text2': text2, 'cosine_similarity': similarity}
     return jsonify(result) 
 
-if __name__ == '__main__':
-    app.run(port=5000)
+#if __name__ == '__main__':
+#    app.run(port=5000)
