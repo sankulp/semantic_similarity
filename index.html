@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosine Similarity Predictor</title>
+    <!-- Include jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <h1>Cosine Similarity Predictor</h1>
+
+    <div>
+        <label for="text1">Text 1:</label>
+        <input type="text" id="text1" placeholder="Enter text 1">
+    </div>
+
+    <div>
+        <label for="text2">Text 2:</label>
+        <input type="text" id="text2" placeholder="Enter text 2">
+    </div>
+
+    <button onclick="predict()">Predict Cosine Similarity</button>
+
+    <div>
+        <h2>Result:</h2>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function predict() {
+            var text1 = $('#text1').val();
+            var text2 = $('#text2').val();
+
+            // Make a POST request to the Flask API
+            $.ajax({
+                url: 'http://localhost:5000/predict',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ 'text1': text1, 'text2': text2 }),
+                success: function(response) {
+                    // Display the result
+                    $('#result').text('Cosine Similarity: ' + response.cosine_similarity.toFixed(3));
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                    $('#result').text('Error occurred. Check the console for details.');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
