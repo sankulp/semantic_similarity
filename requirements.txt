@@ -1,3 +1,4 @@
+click==7.1.2
 scikit-learn==0.24.2
 tensorflow == 2.13.0
 tensorflow-hub == 0.12.0
